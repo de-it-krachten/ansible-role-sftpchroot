@@ -1,0 +1,22 @@
+---
+
+# Generic
+generic:
+  role: ansible-role-sftpchroot
+  role_short: sftpchroot
+  role_description: |
+    Setup user access using sftp in a chrooted environment.
+  collections: []
+
+# Molecule
+molecule:
+  requirements:
+    roles_extra:
+      - openssh
+  converge:
+    roles:
+      - openssh
+    vars:
+      sftpchroot_users:
+        - { name: test1, password: "Abcd1234" }
+        - { name: test2, password: "Abcd1234" }

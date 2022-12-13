@@ -1,0 +1,7 @@
+---
+
+sftpchroot_root: /chroot
+
+sftpchroot_group: sftpusers
+
+sftpchroot_users: []

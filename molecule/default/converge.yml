@@ -1,0 +1,13 @@
+---
+
+- name: Converge
+  hosts: all
+  become: "yes"
+  vars:
+    sftpchroot_users: [{'name': 'test1', 'password': 'Abcd1234'}, {'name': 'test2', 'password': 'Abcd1234'}]
+  roles:
+    - openssh
+  tasks:
+    - name: Include role 'ansible-role-sftpchroot'
+      ansible.builtin.include_role:
+        name: ansible-role-sftpchroot
