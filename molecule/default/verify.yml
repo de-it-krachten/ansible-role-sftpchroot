@@ -5,6 +5,40 @@
   hosts: all
   gather_facts: false
   tasks:
-  - name: Example assertion
-    assert:
-      that: true
+
+    - name: Delete files that might cause ssh/sftp rejection
+      file:
+        path: "{{ item }}"
+        state: absent
+      loop:
+        - /etc/nologin
+        - /run/nologin
+
+    - name: Create SSH directory
+      file:
+        path: /root/.ssh
+        state: directory
+        mode: "0700"
+
+    - name: Copy private keys
+      copy:
+        src: files/sshkey-{{ item }}
+        dest: /root/.ssh/{{ item }}
+        mode: "0600"
+      loop:
+        - test1
+        - test2
+
+    - name: Connect using sftp (user=test1)
+      shell: |
+        sftp -i /root/.ssh/test1 -o StrictHostkeyChecking=no -oBatchMode=no -b - test1@localhost <<EOF
+        put /etc/hosts
+        bye
+        EOF
+
+    - name: Connect using sftp (user=test2)
+      shell: |
+        sftp -i /root/.ssh/test2 -o StrictHostkeyChecking=no -oBatchMode=no -b - test2@localhost <<EOF
+        put /etc/hosts
+        bye
+        EOF
