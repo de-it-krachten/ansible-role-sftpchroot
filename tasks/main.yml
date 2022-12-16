@@ -1,0 +1,92 @@
+---
+
+# Create chroot location
+- name: Create chroot location
+  ansible.builtin.file:
+    path: "{{ sftpchroot_root }}"
+    state: directory
+    owner: root
+    group: root
+    mode: "0755"
+
+- name: Create sftpchroot group
+  ansible.builtin.group:
+    name: "{{ sftpchroot_group }}"
+    state: present
+
+- name: Activate chrooted sftp
+  ansible.builtin.blockinfile:
+    path: /etc/ssh/sshd_config
+    block: |
+      Match Group {{ sftpchroot_group }}
+          ChrootDirectory {{ sftpchroot_root }}/%u
+          ForceCommand internal-sftp
+          X11Forwarding no
+          AllowTcpForwarding no
+          PasswordAuthentication yes
+    marker_begin: "SFTPCHROOT BEGIN"
+    marker_end: "SFTPCHROOT END"
+  notify: Restart sshd
+
+- name: Create all users
+  ansible.builtin.user:
+    name: "{{ item.name }}"
+    groups:
+      - "{{ sftpchroot_group }}"
+  loop: "{{ sftpchroot_users }}"
+  loop_control:
+    label: "{{ item.name }}"
+
+- name: Update all passwords  # noqa jinja[invalid]
+  ansible.builtin.user:
+    name: "{{ item.name }}"
+    password: "{{ item.password | password_hash('sha512', 65534 | random(seed=inventory_hostname) | string) }}"
+    update_password: always
+  loop: "{{ sftpchroot_users }}"
+  loop_control:
+    label: "{{ item.name }}"
+  when: item.password is defined
+
+- name: Add public keys to authorized_keys
+  ansible.posix.authorized_key:
+    user: "{{ item.name }}"
+    state: present
+    key: "{{ item.authorized_key }}"
+  loop: "{{ sftpchroot_users }}"
+  loop_control:
+    label: "{{ item.name }}"
+  when: item.authorized_key is defined
+
+- name: Setup all user chroot directories
+  ansible.builtin.file:
+    path: "{{ sftpchroot_root }}/{{ item.name }}"
+    state: directory
+    owner: root
+    group: root
+    mode: "0755"
+  loop: "{{ sftpchroot_users }}"
+  loop_control:
+    label: "{{ item.name }}"
+
+- name: Setup all chroot directories
+  ansible.builtin.file:
+    path: "{{ sftpchroot_root }}/{{ item.name }}/home"
+    state: directory
+    owner: root
+    group: root
+    mode: "0755"
+  loop: "{{ sftpchroot_users }}"
+  loop_control:
+    label: "{{ item.name }}"
+
+- name: Setup all chroot directories
+  ansible.builtin.file:
+    path: "{{ sftpchroot_root }}/{{ item.name }}/home/{{ item.name }}"
+    state: directory
+    owner: "{{ item.name }}"
+    group: "{{ item.name }}"
+    mode: "0755"
+  loop: "{{ sftpchroot_users }}"
+  loop_control:
+    label: "{{ item.name }}"
+
