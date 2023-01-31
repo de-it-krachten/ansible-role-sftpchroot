@@ -12,10 +12,10 @@ generic:
 molecule:
   requirements:
     roles_extra:
-      - openssh
+      - deitkrachten.openssh
   converge:
     roles:
-      - openssh
+      - deitkrachten.openssh
     vars:
       sftpchroot_users:
         - name: test1
