@@ -1,3 +1,10 @@
+# [1.2.0](https://github.com/de-it-krachten/ansible-role-sftpchroot/compare/v1.1.0...v1.2.0) (2023-08-16)
+
+
+### Features
+
+* Update supported platforms & CI ([0417e9d](https://github.com/de-it-krachten/ansible-role-sftpchroot/commit/0417e9d03253b1af3db5c9d5037ad31b2a301f0e))
+
 # [1.1.0](https://github.com/de-it-krachten/ansible-role-sftpchroot/compare/v1.0.0...v1.1.0) (2023-05-06)
 
 
