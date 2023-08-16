@@ -28,9 +28,17 @@
     marker_end: "SFTPCHROOT END"
   notify: Restart sshd
 
+- name: Create all groups
+  ansible.builtin.group:
+    name: "{{ item.group | default(item.name) }}"
+  loop: "{{ sftpchroot_users }}"
+  loop_control:
+    label: "{{ item.name }}"
+
 - name: Create all users
   ansible.builtin.user:
     name: "{{ item.name }}"
+    group: "{{ item.group | default(item.name) }}"
     groups:
       - "{{ sftpchroot_group }}"
   loop: "{{ sftpchroot_users }}"
