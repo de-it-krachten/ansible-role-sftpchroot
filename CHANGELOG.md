@@ -1,3 +1,10 @@
+# [1.3.0](https://github.com/de-it-krachten/ansible-role-sftpchroot/compare/v1.2.0...v1.3.0) (2024-07-12)
+
+
+### Features
+
+* Add support for Ubuntu 24.04 LTS + Fedora 40 ([9b74ef6](https://github.com/de-it-krachten/ansible-role-sftpchroot/commit/9b74ef6a873cfdd61704d0ed4006deaa6e75d237))
+
 # [1.2.0](https://github.com/de-it-krachten/ansible-role-sftpchroot/compare/v1.1.0...v1.2.0) (2023-08-16)
 
 
