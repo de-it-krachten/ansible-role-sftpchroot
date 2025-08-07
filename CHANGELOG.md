@@ -1,3 +1,14 @@
+# [1.5.0](https://github.com/de-it-krachten/ansible-role-sftpchroot/compare/v1.4.0...v1.5.0) (2025-08-07)
+
+
+### Features
+
+* Add support for AlmaLinux 10 ([a3ea445](https://github.com/de-it-krachten/ansible-role-sftpchroot/commit/a3ea44521aa8b70207415cdc5e22850e22803939))
+* Add support for Debian 13 (Trixie) ([6301612](https://github.com/de-it-krachten/ansible-role-sftpchroot/commit/63016126b24902b121299b3651a918e90f29280f))
+* Add support for OracleLinux 10 ([d296c5e](https://github.com/de-it-krachten/ansible-role-sftpchroot/commit/d296c5e4943a1ae5765e867bad0b84c12cbd6a1e))
+* Add support for Red Hat Enterprise Linux 10 ([ed02ba9](https://github.com/de-it-krachten/ansible-role-sftpchroot/commit/ed02ba920c21a30ea16461cce7a9f8a2d5ced981))
+* Add support for RockyLinux 10 ([9d2d40a](https://github.com/de-it-krachten/ansible-role-sftpchroot/commit/9d2d40a39cd4f5c3b1b49650ce09c456a023b07d))
+
 # [1.4.0](https://github.com/de-it-krachten/ansible-role-sftpchroot/compare/v1.3.0...v1.4.0) (2024-12-29)
 
 
