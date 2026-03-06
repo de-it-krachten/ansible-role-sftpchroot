@@ -32,18 +32,21 @@ Supported platforms
 - AlmaLinux 9
 - AlmaLinux 10
 - SUSE Linux Enterprise 15<sup>1</sup>
+- SUSE Linux Enterprise 16<sup>1</sup>
 - openSUSE Leap 15
+- openSUSE Leap 16
 - Debian 11 (Bullseye)
 - Debian 12 (Bookworm)
 - Debian 13 (Trixie)
 - Ubuntu 20.04 LTS
 - Ubuntu 22.04 LTS
 - Ubuntu 24.04 LTS
-- Fedora 41
 - Fedora 42
+- Fedora 43
 
 Note:
 <sup>1</sup> : no automated testing is performed on these platforms
+
 
 ## Role Variables
 ### defaults/main.yml
@@ -65,6 +68,7 @@ sftpchroot_users: []
   hosts: all
   become: 'yes'
   vars:
+    molecule_driver: '{{ lookup(''env'', ''MOLECULE_DRIVER_NAME'') }}'
     sftpchroot_users:
       - name: test1
         authorized_key: ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQCUi6mvPuL6TerymVJWOoEQu17uXSvzu4/fbQ1T3/3sX4EV+Z1y03mIjl02cMm76fnDrBRVoUM305aJpsV+bk8XsSMMGNYSXY6NkGptInhj+VnTDJM0xNaevWR2oouJy9piaotwa3G06jE9Vg5Ey3Ryx0wM4OjNdHKbPMtx+3hU/LjuP6lOEaR8nj2unS3aPwPCrBXUYgenD+OOsx7SDldb6YQ+vtkQKCfUFVXYA8O0muYwlbUljr/kem4H85X2t7v6fR9yNuL9aflkWkX3l4dMf9R46OP0O/KvG7QdSdU9drIL5sdKSk05h83pdQ1hyJ5cqH5Yt3CXOjYgB6hFqASFvcjMQvIpleMvD5HKYQg+GuEaTjYdkCJD4WDuPokzONFJhNcrEcgh34LmBj8bp7/AGBzH5lIJd/xefrmlz5gewAvC47Dx/JXVgBf2TiBfYeTN0gV3mDJmBqlXEh7ODiI3u0FYLv02SH1z2LIY5fTnR6jkFormTS6r0K9eIwl4gjE=
