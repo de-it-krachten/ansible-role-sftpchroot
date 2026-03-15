@@ -1,3 +1,13 @@
+# [1.6.0](https://github.com/de-it-krachten/ansible-role-sftpchroot/compare/v1.5.0...v1.6.0) (2026-03-15)
+
+
+### Features
+
+* Added support for Fedora 43 ([4ddb501](https://github.com/de-it-krachten/ansible-role-sftpchroot/commit/4ddb50176b64cdf89bd433ba68d09f55fd68b1ea))
+* Drop support for Fedora 41 ([07a6c52](https://github.com/de-it-krachten/ansible-role-sftpchroot/commit/07a6c52c6f0573115db6255947c9bd45f49ebf6d))
+* Drop support for openSUSE Leap 15 ([337c8da](https://github.com/de-it-krachten/ansible-role-sftpchroot/commit/337c8daa096a720bebeb0fcfa42589557bb46570))
+* Drop support for SUSE Linux Enterprise 15 ([128845a](https://github.com/de-it-krachten/ansible-role-sftpchroot/commit/128845af5361ed99952cf9a1c555f0c75f68712e))
+
 # [1.5.0](https://github.com/de-it-krachten/ansible-role-sftpchroot/compare/v1.4.0...v1.5.0) (2025-08-07)
 
 
