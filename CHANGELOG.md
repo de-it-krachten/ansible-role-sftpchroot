@@ -1,3 +1,10 @@
+# [1.8.0](https://github.com/de-it-krachten/ansible-role-sftpchroot/compare/v1.7.0...v1.8.0) (2026-10-30)
+
+
+### Features
+
+* Drop support for Debian 11 (Bullseye) ([20fba59](https://github.com/de-it-krachten/ansible-role-sftpchroot/commit/20fba5923e6de0dd6555cbae103677b63345485b))
+
 # [1.7.0](https://github.com/de-it-krachten/ansible-role-sftpchroot/compare/v1.6.0...v1.7.0) (2026-07-27)
 
 
